@@ -5,10 +5,6 @@ import { Counter } from './Counter';
 
 // Todo: update tests
 describe('Counter', () => {
-  it('should render 0 by default', () => {
-    render(<Counter />);
-    expect(screen.getByTestId('counter-value')).toContainHTML('0');
-  });
 
   it('should contain `increment` text', () => {
     render(<Counter />);
@@ -25,6 +21,7 @@ describe('Counter', () => {
 
   it('should increment by 1', () => {
     render(<Counter />);
+    expect(screen.getByTestId('counter-value')).toContainHTML('0');
     userEvent.click(screen.getByTestId('counter-inc'));
     expect(screen.getByTestId('counter-value')).toContainHTML('1');
   });
