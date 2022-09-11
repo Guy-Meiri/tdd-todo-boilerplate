@@ -35,4 +35,11 @@ describe('AppRouter', () => {
     await waitFor(() => expect(history.location.pathname).toEqual('/counter'));
     expect(screen.getByTestId('counter-page')).toBeInTheDocument();
   });
+
+  it('should render todo when clicking on todo', async () => {
+    const history = renderWithHistory();
+    userEvent.click(screen.getByTestId('todo-link'));
+    await waitFor(() => expect(history.location.pathname).toEqual('/todo'));
+    expect(screen.getByTestId('todo-page')).toBeInTheDocument();
+  });
 });
