@@ -5,7 +5,7 @@ import { About } from '../About/About';
 import { Home } from './Routes/Home';
 import { NoMatch } from './Routes/NoMatch';
 import s from './AppRouter.module.css';
-import Todo from '../Todo/Todo';
+import TodoList from '../Todo/TodoList';
 
 export const LocationDisplay = () => {
   const location = useLocation();
@@ -32,7 +32,7 @@ export const AppRouter = () => (
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/counter" element={<Counter />} />
-      <Route path="/todo" element={<Todo />} />
+      <Route path="/todo" element={<TodoList />} />
       <Route path="*" element={<NoMatch />} />
     </Routes>
 
