@@ -10,7 +10,7 @@ describe('todoSlice', () => {
       reducer: { todo: todoReducer },
     });
     store.dispatch(add(todoItem1));
-    expect(getTodos(store.getState().todo)).toEqual([todoItem1]);
+    expect(getTodos(store.getState())).toEqual([todoItem1]);
   });
 
   it('should remove an existing todo item', () => {
@@ -19,7 +19,7 @@ describe('todoSlice', () => {
       reducer: { todo: todoReducer },
     });
     store.dispatch(remove(todoItem1.id));
-    expect(getTodos(store.getState().todo)).toEqual([]);
+    expect(getTodos(store.getState())).toEqual([]);
   });
 
   it('should let retrive todoItem by ID', () => {

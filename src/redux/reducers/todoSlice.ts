@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { RootState } from '../store/configureStore';
 // import { ActionFn, RootState } from '../store/configureStore';
 
 export interface TodoItem {
@@ -22,7 +23,7 @@ const todoSlice = createSlice({
   },
 });
 
-export const getTodos = (state: TodoStateProps) => state;
+export const getTodos = (state: RootState) => state.todo;
 
 export const getTodoById = (state: TodoStateProps, id: string) => state.find((item) => item.id === id);
 

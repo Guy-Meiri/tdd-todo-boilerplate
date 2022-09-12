@@ -31,7 +31,7 @@ describe('TodoList', () => {
     userEvent.click(screen.getByTestId('add-todo-input'));
     userEvent.type(screen.getByTestId('add-todo-input'), userInput);
 
-    userEvent.click(screen.getByTestId('add-todo-input'));
+    userEvent.click(screen.getByTestId('add-todo-button'));
     expect(screen.getAllByTestId('todo-item')).toHaveLength(1);
   });
 });
