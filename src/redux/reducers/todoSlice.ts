@@ -24,6 +24,8 @@ const todoSlice = createSlice({
 
 export const getTodos = (state: TodoStateProps) => state;
 
+export const getTodoById = (state: TodoStateProps, id: string) => state.find((item) => item.id === id);
+
 export const { add, remove } = todoSlice.actions;
 
 export const todoReducer = todoSlice.reducer;
