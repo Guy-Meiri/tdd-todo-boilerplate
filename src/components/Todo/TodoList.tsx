@@ -1,13 +1,18 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { getTodos } from '../../redux/reducers/todoSlice';
+import React, { useState } from 'react';
 
 export default function TodoList() {
-  const todos = useSelector(getTodos);
-  console.log(todos);
+  const [newTodoInput, setNewTodoInput] = useState('');
+
   return (
     <div data-hook="todo-page">
-      <input data-hook="add-todo-input" type="text"></input>
+      <input
+        data-hook="add-todo-input"
+        type="text"
+        value={newTodoInput}
+        onChange={(e) => {
+          setNewTodoInput(e.target.value);
+        }}
+      ></input>
       <button data-hook="add-todo-button">Add Todo</button>
     </div>
   );
