@@ -1,7 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 // import { ActionFn, RootState } from '../store/configureStore';
 
-export type TodoStateProps = string[];
+export interface TodoItem {
+  id: string;
+  content: string;
+}
+
+export type TodoStateProps = TodoItem[];
 
 const initialState: TodoStateProps = [];
 
@@ -9,7 +14,7 @@ const todoSlice = createSlice({
   name: 'todo',
   initialState,
   reducers: {
-    add: (state, action: { type: string; payload: string }) => {
+    add: (state, action: { type: string; payload: TodoItem }) => {
       state.push(action.payload);
     },
   },
