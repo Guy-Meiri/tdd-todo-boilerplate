@@ -16,12 +16,22 @@ describe('TodoList', () => {
   });
 
   it('should write text into input element ', () => {
+    const userInput = 'test input';
+    render(<TodoList />);
+
+    userEvent.type(screen.getByTestId('add-todo-input'), userInput);
+
+    expect(screen.getByTestId('add-todo-input')).toHaveValue(userInput);
+  });
+
+  it('should add new todo item', () => {
     const userInput = 'new todo item';
     render(<TodoList />);
 
     userEvent.click(screen.getByTestId('add-todo-input'));
     userEvent.type(screen.getByTestId('add-todo-input'), userInput);
 
-    expect(screen.getByTestId('add-todo-input')).toHaveValue(userInput);
+    userEvent.click(screen.getByTestId('add-todo-input'));
+    expect(screen.getAllByTestId('todo-item')).toHaveLength(1);
   });
 });
