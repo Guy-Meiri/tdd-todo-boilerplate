@@ -16,12 +16,14 @@ const todoSlice = createSlice({
   reducers: {
     add: (state, action: { type: string; payload: TodoItem }) => {
       state.push(action.payload);
+      return state;
     },
+    remove: (state, action: { type: string; payload: string }) => state.filter((item) => item.id !== action.payload),
   },
 });
 
 export const getTodos = (state: TodoStateProps) => state;
 
-export const { add } = todoSlice.actions;
+export const { add, remove } = todoSlice.actions;
 
 export const todoReducer = todoSlice.reducer;
