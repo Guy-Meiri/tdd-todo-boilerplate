@@ -45,4 +45,18 @@ describe('TodoList', () => {
     userEvent.click(screen.getByTestId('add-todo-button'));
     expect(screen.getByTestId('delete-todo-button')).toBeInTheDocument();
   });
+
+
+  it('should remove item from list once deleted', () => {
+    const userInput = 'new todo item';
+    render(<TodoList />);
+
+    userEvent.click(screen.getByTestId('add-todo-input'));
+    userEvent.type(screen.getByTestId('add-todo-input'), userInput);
+
+    userEvent.click(screen.getByTestId('add-todo-button'));
+    expect(screen.getByTestId('delete-todo-button')).toBeInTheDocument();
+    userEvent.click(screen.getByTestId('delete-todo-button'));
+    expect(screen.getByTestId('delete-todo-button')).not.toBeInTheDocument();
+  });
 });
