@@ -34,4 +34,15 @@ describe('TodoList', () => {
     userEvent.click(screen.getByTestId('add-todo-button'));
     expect(screen.getAllByTestId('todo-item')).toHaveLength(1);
   });
+
+  it('should have a delete button on todo item', () => {
+    const userInput = 'new todo item';
+    render(<TodoList />);
+
+    userEvent.click(screen.getByTestId('add-todo-input'));
+    userEvent.type(screen.getByTestId('add-todo-input'), userInput);
+
+    userEvent.click(screen.getByTestId('add-todo-button'));
+    expect(screen.getByTestId('delete-todo-button')).toBeInTheDocument();
+  });
 });
