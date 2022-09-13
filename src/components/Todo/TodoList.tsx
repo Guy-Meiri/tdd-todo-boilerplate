@@ -1,7 +1,7 @@
 import { uniqueId } from 'lodash';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTodos, add } from '../../redux/reducers/todoSlice';
+import { getTodos, add, remove } from '../../redux/reducers/todoSlice';
 import { AppDispatch } from '../../redux/store/configureStore';
 import Todo from './TodoItem/Todo';
 
@@ -18,6 +18,12 @@ export default function TodoList() {
         content: newTodoInput,
       })
     );
+  };
+
+  const deleteTodoHandler = (id: string) => {
+
+    console.log(id);
+    dispatch(remove(id));
   };
 
   return (
@@ -38,7 +44,7 @@ export default function TodoList() {
       </button>
       <div>
         {todos.map((item) => (
-          <Todo key={item.id} id={item.id} content={item.content}></Todo>
+          <Todo key={item.id} todo={item} onDelete={deleteTodoHandler}></Todo>
         ))}
       </div>
     </div>
