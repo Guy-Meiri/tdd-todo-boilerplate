@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTodos, add } from '../../redux/reducers/todoSlice';
 import { AppDispatch } from '../../redux/store/configureStore';
-import Todo from './TodoItem/TodoItem';
+import Todo from './TodoItem/Todo';
 
 export default function TodoList() {
   const [newTodoInput, setNewTodoInput] = useState('');
@@ -21,7 +21,10 @@ export default function TodoList() {
   };
 
   return (
-    <div data-hook="todo-page">
+    <div
+      data-hook="todo-page"
+      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}
+    >
       <input
         data-hook="add-todo-input"
         type="text"
@@ -33,10 +36,11 @@ export default function TodoList() {
       <button data-hook="add-todo-button" onClick={addTodoHandler}>
         Add Todo
       </button>
-      {todos.map((item) => (
-        <Todo id={item.id} content={item.content}></Todo>
-
-      ))}
+      <div>
+        {todos.map((item) => (
+          <Todo key={item.id} id={item.id} content={item.content}></Todo>
+        ))}
+      </div>
     </div>
   );
 }
