@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTodos, add, remove } from '../../redux/reducers/todoSlice';
 import { AppDispatch } from '../../redux/store/configureStore';
+import { AddTodo, Button, Container, Title } from './StyledTodoList';
 import Todo from './TodoItem/Todo';
 
 export default function TodoList() {
@@ -21,32 +22,35 @@ export default function TodoList() {
   };
 
   const deleteTodoHandler = (id: string) => {
-
     console.log(id);
     dispatch(remove(id));
   };
 
   return (
-    <div
-      data-hook="todo-page"
-      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}
-    >
-      <input
-        data-hook="add-todo-input"
-        type="text"
-        value={newTodoInput}
-        onChange={(e) => {
-          setNewTodoInput(e.target.value);
-        }}
-      ></input>
-      <button data-hook="add-todo-button" onClick={addTodoHandler}>
-        Add Todo
-      </button>
+    <Container data-hook="todo-page">
+      <Title>
+        TO DO
+      </Title>
+      <AddTodo>
+        <input
+          data-hook="add-todo-input"
+          type="text"
+          value={newTodoInput}
+          placeholder="Learn TDD :)"
+          onChange={(e) => {
+            setNewTodoInput(e.target.value);
+          }}
+        ></input>
+        <Button data-hook="add-todo-button" onClick={addTodoHandler}>
+          Add Todo
+        </Button>
+      </AddTodo>
+
       <div>
         {todos.map((item) => (
           <Todo key={item.id} todo={item} onDelete={deleteTodoHandler}></Todo>
         ))}
       </div>
-    </div>
+    </Container>
   );
 }
